@@ -2,6 +2,7 @@ class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost)
     {
+        //Instead of using separate vector we can use the cost vector to perform the operation.
         int n = cost.size();
         vector<int> minCost(n+1,0);
         minCost[0] = cost[0];
