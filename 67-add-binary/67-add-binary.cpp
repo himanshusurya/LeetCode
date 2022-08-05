@@ -3,117 +3,46 @@ public:
     string addBinary(string a, string b) 
     {
         string result;
-        char op1, op2;
-        char sum ='0', carry='0';
+        int op1, op2;
+        int sum =0, carry=0;
         int i = a.size() , j = b.size();
         while(i>0 && j>0)
         {
-            op1 = a[--i];
-            op2 = b[--j];
+            op1 = a[--i] -'0';
+            op2 = b[--j] -'0';
             
-            if( op1=='1' && op2=='1')
+            sum = (op1 + op2 + carry) % 2;
+            carry = (op1 + op2 + carry) / 2;
+            
+            result.insert(result.begin(),sum+'0');   
+            if(i==0 && j==0 && carry ==1)
             {
-                if(carry=='1')
-                {
-                    carry = '1';
-                    sum = '1';
-                }
-                else
-                {
-                    carry = '1';
-                    sum = '0';
-                }
-            }
-            else if ((op1=='1' && op2=='0') || (op1=='0' && op2=='1'))
-            {
-                if(carry=='1')
-                {
-                    carry = '1';
-                    sum = '0';
-                }
-                else
-                {
-                    carry = '0';
-                    sum = '1';
-                }
-            }
-            else
-            {
-                if(carry=='1')
-                {
-                    carry = '0';
-                    sum = '1';
-                }
-                else
-                {
-                    carry = '0';
-                    sum = '0';
-                }
-            }
-            result.insert(result.begin(),sum);   
-            if(i==0 && j==0 && carry =='1')
-            {
-                result.insert(result.begin(),carry);             
+                result.insert(result.begin(),carry+'0');             
             }
         }
         //For remaining i & j
-        
         while(i>0)
         {
-           op1 = a[--i];                  
-           if(carry=='1' && op1=='1') 
+           op1 = a[--i] -'0';      
+           sum = (op1 + carry) % 2;
+           carry = (op1 + carry) / 2;
+           result.insert(result.begin(),sum+'0');   
+           if(i==0 && carry ==1)
            {
-               sum='0';
-               result.insert(result.begin(),sum);             
-               if(i==0 )
-               {
-                   result.insert(result.begin(),carry);             
-               }
-           }
-           else
-           {
-                if((carry=='1' && op1=='0') || (carry=='0' && op1=='1'))
-                {
-                    sum='1';
-                    carry = '0';
-                    result.insert(result.begin(),sum);             
-                }         
-                else
-                {
-                    carry = '0';
-                    result.insert(result.begin(),op1);             
-                }
+               result.insert(result.begin(),carry+'0');             
            }
         }
         // For remaining j
        while(j>0)
         {
-           op2 = b[--j];                  
-           if(carry=='1' && op2=='1') 
+           op2 = b[--j]-'0';                  
+           sum = (op2 + carry) % 2;
+           carry = (op2 + carry) / 2;
+           result.insert(result.begin(),sum+'0');   
+           if(j==0 && carry ==1)
            {
-               sum='0';
-               carry = '1';
-               result.insert(result.begin(),sum);             
-               if(j==0)
-               {
-                   result.insert(result.begin(),carry);             
-               }
+               result.insert(result.begin(),carry+'0');             
            }
-           else
-           {
-                if((carry=='1' && op2=='0') || (carry=='0' && op2=='1'))
-                {
-                    sum='1';
-                    carry = '0';
-                    result.insert(result.begin(),sum);             
-                }         
-                else
-                {
-                    carry = '0';
-                    result.insert(result.begin(),op2);             
-                }
-           }
-            
         }        
         return result;
     }
