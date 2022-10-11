@@ -18,7 +18,9 @@ public:
         {
             while(start->next && start->val == start->next->val)
             {
+                auto temp = start->next;
                 start->next = start->next->next;
+                delete(temp);
             }
             start = start->next;
         }
