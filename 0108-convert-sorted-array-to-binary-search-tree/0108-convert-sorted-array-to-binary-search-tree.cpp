@@ -17,8 +17,7 @@ public:
         if(left<=right)
         {
             int mid = right + (left -right)/2;
-            newNode = new TreeNode;
-            newNode->val = nums[mid];
+            newNode = new TreeNode(nums[mid]);
             
             newNode->left  = helperSortedArrayToBst(nums,left, mid-1);
             newNode->right = helperSortedArrayToBst(nums,mid+1,right);
