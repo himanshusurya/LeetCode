@@ -1,5 +1,6 @@
 class Solution {
 public:
+/*
     int majorityElement(vector<int>& nums) 
     {
         int major;
@@ -10,6 +11,37 @@ public:
             {
                 major = nums[i]   ;
                 break;
+            }
+        }
+        return major;
+    }
+    */
+///////////////////////////////////////////
+//Hash Map Solution
+    int majorityElement(vector<int>& nums) 
+    {
+        int major;
+        auto max = -1;
+        unordered_map<int,int> Map;
+        for(auto i:nums)
+        {
+            if(Map.find(i) == Map.end())
+            {
+                Map[i] = 0;
+            }
+            else
+            {
+                Map[i]++;
+            }
+                
+        }
+        
+        for(auto i:Map)
+        {
+            if(max < i.second)
+            {
+                major = i.first;
+                max = i.second;
             }
         }
         return major;
