@@ -18,7 +18,7 @@ public:
     */
 ///////////////////////////////////////////
 //Hash Map Solution
-    int majorityElement(vector<int>& nums) 
+/*    int majorityElement(vector<int>& nums) 
     {
         int major;
         auto max = -1;
@@ -35,7 +35,6 @@ public:
             }
                 
         }
-        
         for(auto i:Map)
         {
             if(max < i.second)
@@ -46,4 +45,31 @@ public:
         }
         return major;
     }
+    */
+///////////////////////////////////////////
+//Booye-Mayor Voting Algorithm
+    int majorityElement(vector<int>& nums)
+    {
+        int major = nums[0];
+        int count = 1;
+        for(int i = 1; i < nums.size(); i++)
+        {
+            if(count == 0)
+            {
+                major = nums[i];
+                count = 1;
+            }
+            else if(major == nums[i])
+            {
+                count++;
+            }
+            else
+            {
+                count--;
+            }
+        }
+        return major;
+    }
+    
+    
 };
