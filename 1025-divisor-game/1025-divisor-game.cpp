@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool divisorGame(int n) 
+/*    bool divisorGame(int n) 
     {
         bool dp[n+1];
         memset(dp,0,sizeof(dp));
@@ -14,8 +14,15 @@ public:
                 }
             }
         }
-        
         return dp[n];
+    }
+    */
+   //Allice will always loose whenever n is odd
+     bool divisorGame(int n) 
+    {
+        if(n%2 == 0)
+            return true;
+         return false;
     }
 };
 
