@@ -6,7 +6,7 @@ public:
         vector<vector<char>> temp(numRows);
         int i = 1;
         bool down = true;
-        if(numRows == 1)
+        if(numRows == 1 || numRows > s.size())
             return s;
         for(auto ch:s)
         {
