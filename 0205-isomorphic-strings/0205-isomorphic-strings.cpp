@@ -11,7 +11,8 @@ public:
             {
                        
                        map[s[i]] = t[i];
-                       for(int j = i; j < t.size() ; j++)
+                       visited[i] = 1;
+                       for(int j = i+1; j < t.size() ; j++)
                         {
                            if(s[i] == s[j] || t[i] == t[j])
                             {
