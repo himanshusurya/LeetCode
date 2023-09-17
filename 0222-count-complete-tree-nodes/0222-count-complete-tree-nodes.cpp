@@ -16,18 +16,19 @@ public:
         if(root == NULL)
             return 0;
         
-        auto *left = root, *right=root;
+        auto *cur=root;
         auto hl = 0, hr = 0;
         
-        while(left != NULL)
+        while(cur != NULL)
         {
-            left = left->left;
+            cur = cur->left;
             hl++;
         }
         
-        while(right != NULL)
+        cur = root->right;
+        while(cur != NULL)
         {
-            right = right->right;
+            cur = cur->right;
             hr++;
         }
         if(hl == hr)
