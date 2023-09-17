@@ -24,11 +24,12 @@ public:
         unordered_map<int,int> Map;
         for(int i = 0; i < nums.size(); i++)
         {
-            if(Map.find(nums[i]) == Map.end())
+            auto itr = Map.find(nums[i]);
+            if(itr == Map.end())
             {
                 Map[nums[i]] = i;
             }
-            else if((i - Map.find(nums[i])->second) <= k)
+            else if((i - itr->second) <= k)
             {
                 return true;
             }
