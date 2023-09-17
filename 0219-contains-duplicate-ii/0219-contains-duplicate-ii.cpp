@@ -25,12 +25,18 @@ public:
         for(int i = 0; i < nums.size(); i++)
         {
             auto itr = Map.find(nums[i]);
-            if(itr != Map.end())
+            if(itr == Map.end())
             {
-                if((i - itr->second) <= k)
-                    return true;
+                Map[nums[i]] = i;
             }
-            Map[nums[i]] = i;         
+            else if((i - itr->second) <= k)
+            {
+                return true;
+            }
+            else
+            {
+                Map[nums[i]] = i;
+            }
         }            
         return false;        
     }
