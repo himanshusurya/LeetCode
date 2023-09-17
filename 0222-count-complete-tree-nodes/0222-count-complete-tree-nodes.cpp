@@ -15,6 +15,26 @@ public:
     {
         if(root == NULL)
             return 0;
+        
+        auto *left = root, *right=root;
+        auto hl = 0, hr = 0;
+        
+        while(left != NULL)
+        {
+            left = left->left;
+            hl++;
+        }
+        
+        while(right != NULL)
+        {
+            right = right->right;
+            hr++;
+        }
+        if(hl == hr)
+        {
+            return pow(2,hl)-1;
+        }
+        
         return countNodes(root->left) + countNodes(root->right) + 1;        
     }
 };
