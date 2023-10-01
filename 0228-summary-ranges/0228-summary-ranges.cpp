@@ -8,8 +8,7 @@ public:
         {
             res.push_back(to_string(nums[0]));
             return res;
-        }
-        
+        }     
         for(int i=1; i < nums.size(); i++)
         {       
             string str;
@@ -21,8 +20,7 @@ public:
             str += to_string(nums[start]);
             if(start != end)
             {
-                str += "->";
-                str += to_string(nums[end]);
+                str += "->" + to_string(nums[end]);
             }                           
             start = end + 1;
             end = start;
